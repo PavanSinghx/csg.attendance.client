@@ -1,0 +1,25 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Register Student Class: {{classId}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngFor="let student of learnerList; let i = index">
+      <ion-item *ngIf="student.isActive">
+        <ion-label>{{ student.firstnames }} {{ student.surname }} (Id {{ student.id }})</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="student.attendance"></ion-checkbox>
+      </ion-item>  
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="full" fill="solid" (click)="submitRequest()">Submit</ion-button>
+  </ion-toolbar>
+</ion-footer>

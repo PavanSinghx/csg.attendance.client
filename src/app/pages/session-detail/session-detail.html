@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Class Options</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="registerStudents()" button>
+      <ion-label color="primary">Register Students</ion-label>
+    </ion-item>
+    <ion-item (click)="registerAttendance()" button>
+      <ion-label color="primary">Register Attendance</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Start Time</ion-label>
+    <ion-datetime
+      displayFormat="DDD/MMM/YY"
+      [dayShortNames]="customDayShortNames"
+      min="2020-01"
+      [(ngModel)]="startDate"
+    ></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>End Time</ion-label>
+    <ion-datetime
+      displayFormat="DDD/MMM/YY"
+      [dayShortNames]="customDayShortNames"
+      min="2020-01"
+      [(ngModel)]="endDate"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-card *ngFor="let student of studentList">
+    <ion-card-header>
+      <ion-card-title>Class Name: {{student.className}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>Grade: {{student.grade}}</p>
+      <p>Days Attended: {{student.daysAttended}}</p>
+      <p>Days Missed: {{student.daysMissed}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="full" fill="solid" (click)="getGrades()">Get Grades</ion-button>
+  </ion-toolbar>
+</ion-footer>

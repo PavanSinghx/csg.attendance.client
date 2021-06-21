@@ -1,0 +1,47 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Register Student Class: {{classId}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Firstnames</ion-label>
+      <ion-input [(ngModel)]="createLeaner.firstnames"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Surname</ion-label>
+      <ion-input [(ngModel)]="createLeaner.surname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Student Id</ion-label>
+      <ion-input type="number" [(ngModel)]="createLeaner.id"></ion-input>
+    </ion-item>
+    <ion-button expand="full" fill="solid" (click)="addStudent()">Save Student</ion-button>
+    <ion-button expand="full" fill="solid" (click)="addStudent()" color="danger">Clear</ion-button>
+  </ion-list>
+
+  <ion-item-divider> </ion-item-divider>
+
+  <ion-list>
+    <div  *ngFor="let student of learnerList; let i = index">
+      <ion-item *ngIf="student.isActive">
+        <ion-label>{{ student.firstnames }} {{ student.surname }}</ion-label>
+        <p>Student Id: {{ student.id }}</p>
+        <ion-icon (click)="removeItem(i)" name="close" item-right></ion-icon>
+      </ion-item>
+    </div>     
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="full" fill="solid" (click)="submitRequest()">Submit</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,44 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" fill="solid" (click)="termReport()">Report</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime (ionChange)="onChangeSummary($event)" displayFormat="DDD/MMM/YY" [dayShortNames]="customDayShortNames" min="2020-01"></ion-datetime>
+  </ion-item>
+  <ion-list>
+
+    <ion-card *ngFor="let dailyGrade of dailyGradeList">
+      <ion-card-header>
+        <ion-card-title>Class: {{dailyGrade.className}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-item class="ion-activated">
+          <ion-label>Grade: </ion-label>
+          <ion-input [(ngModel)]="dailyGrade.grade" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Attendance: </ion-label>
+          <ion-checkbox [(ngModel)]="dailyGrade.dailyAttendance"> </ion-checkbox>
+        </ion-item>
+      </ion-card-content>
+
+    </ion-card>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="full" fill="solid" (click)="submitRequest()">Submit</ion-button>
+  </ion-toolbar>
+</ion-footer>
